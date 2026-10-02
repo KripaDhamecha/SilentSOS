@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+  />
+
+  <title>SilentSOS</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- ================= AUTH ================= -->
+
+  <section id="authScreen" class="auth-screen">
+
+    <div class="auth-card">
+
+      <div class="auth-brand">
+        <div class="brand-mark">S</div>
+        <div>
+          <h1>SilentSOS</h1>
+          <p>Private safety calculator</p>
+        </div>
+      </div>
+
+      <!-- LOGIN -->
+
+      <div id="loginForm" class="auth-form">
+
+        <h2>Welcome back</h2>
+        <p class="auth-subtitle">
+          Sign in to continue.
+        </p>
+
+        <label>Email</label>
+        <input
+          id="loginEmail"
+          type="email"
+          placeholder="Enter your email"
+          autocomplete="email"
+        />
+
+        <label>Password</label>
+        <input
+          id="loginPassword"
+          type="password"
+          placeholder="Enter your password"
+          autocomplete="current-password"
+        />
+
+        <button id="loginBtn" class="primary-btn">
+          Sign in
+        </button>
+
+        <button id="forgotBtn" class="text-btn">
+          Forgot password?
+        </button>
+
+        <div class="auth-switch">
+          Don't have an account?
+          <button id="showSignupBtn">Create account</button>
+        </div>
+
+        <p id="loginMessage" class="form-message"></p>
+
+      </div>
+
+
+      <!-- SIGNUP -->
+
+      <div id="signupForm" class="auth-form hidden">
+
+        <h2>Create account</h2>
+        <p class="auth-subtitle">
+          Create your private SilentSOS account.
+        </p>
+
+        <label>Full name</label>
+        <input
+          id="signupName"
+          type="text"
+          placeholder="Enter your name"
+          autocomplete="name"
+        />
+
+        <label>Email</label>
+        <input
+          id="signupEmail"
+          type="email"
+          placeholder="Enter your email"
+          autocomplete="email"
+        />
+
+        <label>Password</label>
+        <input
+          id="signupPassword"
+          type="password"
+          placeholder="Create a password"
+          autocomplete="new-password"
+        />
+
+        <label>Secret SOS code</label>
+        <input
+          id="signupSecret"
+          type="password"
+          inputmode="numeric"
+          maxlength="12"
+          placeholder="Example: 2580"
+        />
+
+        <small class="field-help">
+          This code is used only when you press "=" after entering it in the calculator.
+        </small>
+
+        <button id="signupBtn" class="primary-btn">
+          Create account
+        </button>
+
+        <div class="auth-switch">
+          Already have an account?
+          <button id="showLoginBtn">Sign in</button>
+        </div>
+
+        <p id="signupMessage" class="form-message"></p>
+
+      </div>
+
+
+      <!-- FORGOT PASSWORD -->
+
+      <div id="forgotForm" class="auth-form hidden">
+
+        <h2>Reset password</h2>
+
+        <p class="auth-subtitle">
+          Enter your account email and we will send you a password reset link.
+        </p>
+
+        <label>Email</label>
+        <input
+          id="forgotEmail"
+          type="email"
+          placeholder="Enter your email"
+        />
+
+        <button id="sendResetBtn" class="primary-btn">
+          Send reset link
+        </button>
+
+        <button id="backToLoginBtn" class="text-btn">
+          Back to sign in
+        </button>
+
+        <p id="forgotMessage" class="form-message"></p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= APPLICATION ================= -->
+
+  <section id="appScreen" class="app-screen hidden">
+
+    <main class="calculator-app">
+
+      <!-- CALCULATOR -->
+
+      <div class="calculator">
+
+        <!-- DISPLAY -->
+
+        <div class="calculator-display">
+
+          <div class="display-top-row">
+
+            <div class="display-status">
+              <span id="displayMode">STANDARD</span>
+            </div>
+
+            <!-- THREE DOT MENU IS INSIDE DISPLAY -->
+
+            <button
+              id="menuBtn"
+              class="display-menu-btn"
+              aria-label="Open menu"
+            >
+              ⋮
+            </button>
+
+          </div>
+
+          <div id="expression" class="expression">
+          </div>
+
+          <div id="display" class="display-value">
+            0
+          </div>
+
+        </div>
+
+
+        <!-- KEYPAD -->
+
+        <div class="calculator-keypad">
+
+          <button class="calc-key function-key" data-action="clear">
+            AC
+          </button>
+
+          <button class="calc-key function-key" data-action="delete">
+            DEL
+          </button>
+
+          <button class="calc-key function-key" data-action="percent">
+            %
+          </button>
+
+          <button class="calc-key operator-key" data-value="/">
+            ÷
+          </button>
+
+
+          <button class="calc-key number-key" data-value="7">
+            7
+          </button>
+
+          <button class="calc-key number-key" data-value="8">
+            8
+          </button>
+
+          <button class="calc-key number-key" data-value="9">
+            9
+          </button>
+
+          <button class="calc-key operator-key" data-value="*">
+            ×
+          </button>
+
+
+          <button class="calc-key number-key" data-value="4">
+            4
+          </button>
+
+          <button class="calc-key number-key" data-value="5">
+            5
+          </button>
+
+          <button class="calc-key number-key" data-value="6">
+            6
+          </button>
+
+          <button class="calc-key operator-key" data-value="-">
+            −
+          </button>
+
+
+          <button class="calc-key number-key" data-value="1">
+            1
+          </button>
+
+          <button class="calc-key number-key" data-value="2">
+            2
+          </button>
+
+          <button class="calc-key number-key" data-value="3">
+            3
+          </button>
+
+          <button class="calc-key operator-key" data-value="+">
+            +
+          </button>
+
+
+          <button class="calc-key number-key zero-key" data-value="0">
+            0
+          </button>
+
+          <button class="calc-key number-key" data-value=".">
+            .
+          </button>
+
+          <button class="calc-key equals-key" data-action="equals">
+            =
+          </button>
+
+        </div>
+
+      </div>
+
+    </main>
+
+
+    <!-- ================= SIDE MENU ================= -->
+
+    <aside id="sideMenu" class="side-menu">
+
+      <div class="side-menu-header">
+
+        <div>
+          <strong>Menu</strong>
+          <span id="menuUserEmail"></span>
+        </div>
+
+        <button id="closeMenuBtn" class="close-btn">
+          ×
+        </button>
+
+      </div>
+
+
+      <button class="menu-item" data-section="profile">
+        <span>Profile</span>
+        <small>Account information</small>
+      </button>
+
+      <button class="menu-item" data-section="contacts">
+        <span>Emergency Contacts</span>
+        <small>People who receive alerts</small>
+      </button>
+
+      <button class="menu-item" data-section="history">
+        <span>Activity History</span>
+        <small>Previous emergency alerts</small>
+      </button>
+
+      <button class="menu-item" data-section="settings">
+        <span>Settings</span>
+        <small>Password and secret code</small>
+      </button>
+
+      <button class="menu-item" data-section="help">
+        <span>Help Desk</span>
+        <small>Complete application guide</small>
+      </button>
+
+      <button id="signOutBtn" class="menu-item danger-item">
+        <span>Sign out</span>
+        <small>Exit this account</small>
+      </button>
+
+    </aside>
+
+    <div id="menuOverlay" class="menu-overlay"></div>
+
+
+    <!-- ================= DETAIL PANEL ================= -->
+
+    <aside id="detailPanel" class="detail-panel">
+
+      <div class="detail-header">
+
+        <button id="closeDetailBtn" class="back-btn">
+          ←
+        </button>
+
+        <h2 id="detailTitle">
+          Details
+        </h2>
+
+      </div>
+
+      <div id="detailContent" class="detail-content"></div>
+
+    </aside>
+
+
+    <!-- ================= CONTACT MODAL ================= -->
+
+    <div id="contactModal" class="modal hidden">
+
+      <div class="modal-card">
+
+        <div class="modal-header">
+          <h3 id="contactModalTitle">Add emergency contact</h3>
+
+          <button id="closeContactModalBtn" class="close-btn">
+            ×
+          </button>
+        </div>
+
+        <label>Name</label>
+
+        <input
+          id="contactName"
+          type="text"
+          placeholder="Contact name"
+        />
+
+        <label>Phone number</label>
+
+        <input
+          id="contactPhone"
+          type="tel"
+          placeholder="+91XXXXXXXXXX"
+        />
+
+        <button id="saveContactBtn" class="primary-btn">
+          Save contact
+        </button>
+
+        <p id="contactMessage" class="form-message"></p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <script type="module" src="app.js"></script>
+
+</body>
+</html>
